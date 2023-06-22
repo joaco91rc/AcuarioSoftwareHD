@@ -223,7 +223,7 @@ namespace CapaPresentacion
             {
                 foreach (DataGridViewRow row in dgvData.Rows)
                 {
-                    total += Convert.ToDecimal(row.Cells["SubTotal"].Value.ToString());
+                    total += Convert.ToDecimal(row.Cells["SubTotal"].Value.ToString() + Convert.ToDecimal(txtDiferencia.Text));
 
                 }
                 txtTotalAPagar.Text = total.ToString("0.00");
@@ -523,6 +523,8 @@ namespace CapaPresentacion
 
                         txtTotalAPagar.Text = "0";
                         cboFormaPago.SelectedIndex = 0;
+                        txtDiferencia.Text = "0";
+                    txtDiferencia.Enabled = true;
 
                 }
             }
@@ -579,6 +581,32 @@ namespace CapaPresentacion
                 {
                     txtMontoDescuento.Visible = false;
                     MessageBox.Show("Ingrese un valor entre 1 y 100 para el porcentaje de descuento", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                }
+            }
+        }
+
+        private void txtDiferencia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+
+                if (txtDiferencia.Text != "" )
+                {
+                    decimal diferencia = Convert.ToDecimal(txtDiferencia.Text);
+                    //txtMontoDescuento.Visible = true;
+                    //txtMontoDescuento.Enabled = false;
+                    //decimal montoDescuento = (Convert.ToDecimal(txtTotalAPagar.Text) * Convert.ToDecimal(txtDescuento.Text)) / 100;
+                    //txtMontoDescuento.Text = montoDescuento.ToString("0.00");
+                    txtTotalAPagar.Text = (Convert.ToDecimal(txtTotalAPagar.Text) + diferencia).ToString("0.00");
+                    txtDiferencia.Enabled = false;
+                    //txtDescuento.Enabled = false;
+                    //lblDescuento.Visible = true;
+                }
+                else
+                {
+                    
+                    MessageBox.Show("Ingrese un valor si existe una diferencia o 0 si no lo existe", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 }
             }
