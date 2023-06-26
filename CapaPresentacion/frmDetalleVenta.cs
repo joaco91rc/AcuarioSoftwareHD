@@ -41,6 +41,7 @@ namespace CapaPresentacion
                 txtNombreCliente.Text = oVenta.nombreCliente;
                 txtDescuento.Text = oVenta.descuento.ToString();
                 txtMontoDescuento.Text = oVenta.montoDescuento.ToString();
+                txtFormaDePago.Text = oVenta.formaPago.ToString();
 
                 dgvData.Rows.Clear();
                 foreach (DetalleVenta dv in oVenta.oDetalleVenta)
@@ -65,6 +66,9 @@ namespace CapaPresentacion
             txtTotalAPagar.Text = "0.00";
             txtPagaCon.Text = "0.00";
             txtCambio.Text = "0.00";
+            txtBuscarVenta.Text = "";
+            txtFormaDePago.Text = "";
+            txtBuscarVenta.Select();
         }
 
         private void btnDescargarPDF_Click(object sender, EventArgs e)
@@ -111,6 +115,7 @@ namespace CapaPresentacion
             textoHtml = textoHtml.Replace("@montototal", txtTotalAPagar.Text);
             textoHtml = textoHtml.Replace("@pagocon", txtPagaCon.Text);
             textoHtml = textoHtml.Replace("@cambio", txtCambio.Text);
+            textoHtml = textoHtml.Replace("@formapago", txtFormaDePago.Text);
 
 
             SaveFileDialog saveFile = new SaveFileDialog();
@@ -148,10 +153,53 @@ namespace CapaPresentacion
                     stream.Close();
 
                     MessageBox.Show("Documento Generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dtpFecha.Value = DateTime.Now;
+                    cboTipoDocumento.SelectedItem = 0;
+                    txtUsuario.Text = "";
+                    txtDNI.Text = "";
+                    txtNombreCliente.Text = "";
+                    dgvData.Rows.Clear();
+                    txtTotalAPagar.Text = "0.00";
+                    txtPagaCon.Text = "0.00";
+                    txtCambio.Text = "0.00";
+                    txtBuscarVenta.Text = "";
+                    txtFormaDePago.Text = "";
+                    txtBuscarVenta.Select();
 
                 }
             }
 
+        }
+
+        private void txtBuscarVenta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+
+                Venta oVenta = new CN_Venta().ObtenerVenta(txtBuscarVenta.Text);
+                if (oVenta.idVenta != 0)
+                {
+                    txtnroDocumento.Text = oVenta.nroDocumento;
+                    dtpFecha.Text = oVenta.fechaRegistro;
+                    cboTipoDocumento.Text = oVenta.tipoDocumento;
+                    txtUsuario.Text = oVenta.oUsuario.nombreCompleto;
+                    txtDNI.Text = oVenta.documentoCliente;
+                    txtNombreCliente.Text = oVenta.nombreCliente;
+                    txtDescuento.Text = oVenta.descuento.ToString();
+                    txtMontoDescuento.Text = oVenta.montoDescuento.ToString();
+                    txtFormaDePago.Text = oVenta.formaPago.ToString();
+
+                    dgvData.Rows.Clear();
+                    foreach (DetalleVenta dv in oVenta.oDetalleVenta)
+                    {
+                        dgvData.Rows.Add(new object[] { dv.oProducto.nombre, dv.precioVenta, dv.cantidad, dv.subTotal });
+                    }
+
+                    txtTotalAPagar.Text = oVenta.montoTotal.ToString("0.00");
+                    txtPagaCon.Text = oVenta.montoPago.ToString("0.00");
+                    txtCambio.Text = oVenta.montoCambio.ToString("0.00");
+                }
+            }
         }
     }
     }

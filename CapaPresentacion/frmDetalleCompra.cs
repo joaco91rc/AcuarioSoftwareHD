@@ -57,6 +57,7 @@ namespace CapaPresentacion
             dgvData.Rows.Clear();
             txtTotalAPagar.Text = "0.00";
             txtnroDocumento.Text = "";
+            txtBuscarCompra.Text = "";
         }
 
         private void btnDescargarPDF_Click(object sender, EventArgs e)
@@ -136,12 +137,47 @@ namespace CapaPresentacion
                     stream.Close();
 
                     MessageBox.Show("Documento Generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dtpFecha.Value = DateTime.Now;
+                    cboTipoDocumento.SelectedItem = 0;
+                    txtUsuario.Text = "";
+                    txtCUIT.Text = "";
+                    txtRazonSocial.Text = "";
+                    dgvData.Rows.Clear();
+                    txtTotalAPagar.Text = "0.00";
+                    txtnroDocumento.Text = "";
+                    txtBuscarCompra.Text = "";
 
                 }
             }
         
         }
 
+        private void txtBuscarCompra_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                Compra oCompra = new CN_Compra().ObtenerCompra(txtBuscarCompra.Text);
+
+                if (oCompra.idCompra != 0)
+                {
+                    txtnroDocumento.Text = oCompra.nroDocumento;
+                    dtpFecha.Text = oCompra.fechaRegistro;
+                    cboTipoDocumento.Text = oCompra.tipoDocumento;
+                    txtUsuario.Text = oCompra.oUsuario.nombreCompleto;
+                    txtCUIT.Text = oCompra.oProveedor.documento;
+                    txtRazonSocial.Text = oCompra.oProveedor.razonSocial;
+
+                    dgvData.Rows.Clear();
+
+                    foreach (DetalleCompra dc in oCompra.oDetalleCompra)
+                    {
+
+                        dgvData.Rows.Add(new object[] { dc.oProducto.nombre, dc.precioCompra, dc.cantidad, dc.montoTotal });
+                    }
+                    txtTotalAPagar.Text = oCompra.montoTotal.ToString("0.00");
+                }
+            }
+        }
     }
 }
 

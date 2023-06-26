@@ -70,6 +70,8 @@ namespace CapaPresentacion
             this.label11 = new System.Windows.Forms.Label();
             this.txtMontoDescuento = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.txtFormaDePago = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.gbInfoProveedor.SuspendLayout();
@@ -97,7 +99,7 @@ namespace CapaPresentacion
             this.btnDescargarPDF.IconColor = System.Drawing.Color.White;
             this.btnDescargarPDF.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnDescargarPDF.IconSize = 32;
-            this.btnDescargarPDF.Location = new System.Drawing.Point(640, 475);
+            this.btnDescargarPDF.Location = new System.Drawing.Point(639, 463);
             this.btnDescargarPDF.Name = "btnDescargarPDF";
             this.btnDescargarPDF.Size = new System.Drawing.Size(112, 48);
             this.btnDescargarPDF.TabIndex = 86;
@@ -109,7 +111,7 @@ namespace CapaPresentacion
             // txtTotalAPagar
             // 
             this.txtTotalAPagar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtTotalAPagar.Location = new System.Drawing.Point(109, 491);
+            this.txtTotalAPagar.Location = new System.Drawing.Point(109, 454);
             this.txtTotalAPagar.Name = "txtTotalAPagar";
             this.txtTotalAPagar.Size = new System.Drawing.Size(107, 20);
             this.txtTotalAPagar.TabIndex = 85;
@@ -121,7 +123,7 @@ namespace CapaPresentacion
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(212)))), ((int)(((byte)(216)))));
-            this.label13.Location = new System.Drawing.Point(15, 491);
+            this.label13.Location = new System.Drawing.Point(15, 454);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(88, 17);
             this.label13.TabIndex = 84;
@@ -184,7 +186,7 @@ namespace CapaPresentacion
             this.txtNombreCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNombreCliente.Location = new System.Drawing.Point(206, 78);
             this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(196, 29);
+            this.txtNombreCliente.Size = new System.Drawing.Size(230, 29);
             this.txtNombreCliente.TabIndex = 51;
             // 
             // txtDNI
@@ -282,6 +284,7 @@ namespace CapaPresentacion
             this.txtBuscarVenta.Name = "txtBuscarVenta";
             this.txtBuscarVenta.Size = new System.Drawing.Size(196, 20);
             this.txtBuscarVenta.TabIndex = 80;
+            this.txtBuscarVenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscarVenta_KeyDown);
             // 
             // label4
             // 
@@ -448,7 +451,7 @@ namespace CapaPresentacion
             // txtPagaCon
             // 
             this.txtPagaCon.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPagaCon.Location = new System.Drawing.Point(306, 491);
+            this.txtPagaCon.Location = new System.Drawing.Point(306, 454);
             this.txtPagaCon.Name = "txtPagaCon";
             this.txtPagaCon.Size = new System.Drawing.Size(107, 20);
             this.txtPagaCon.TabIndex = 89;
@@ -460,7 +463,7 @@ namespace CapaPresentacion
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(212)))), ((int)(((byte)(216)))));
-            this.label9.Location = new System.Drawing.Point(229, 491);
+            this.label9.Location = new System.Drawing.Point(222, 454);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(71, 17);
             this.label9.TabIndex = 88;
@@ -469,7 +472,7 @@ namespace CapaPresentacion
             // txtCambio
             // 
             this.txtCambio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCambio.Location = new System.Drawing.Point(495, 491);
+            this.txtCambio.Location = new System.Drawing.Point(526, 491);
             this.txtCambio.Name = "txtCambio";
             this.txtCambio.Size = new System.Drawing.Size(107, 20);
             this.txtCambio.TabIndex = 91;
@@ -481,7 +484,7 @@ namespace CapaPresentacion
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(212)))), ((int)(((byte)(216)))));
-            this.label10.Location = new System.Drawing.Point(430, 491);
+            this.label10.Location = new System.Drawing.Point(422, 491);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(59, 17);
             this.label10.TabIndex = 90;
@@ -490,9 +493,9 @@ namespace CapaPresentacion
             // txtDescuento
             // 
             this.txtDescuento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDescuento.Location = new System.Drawing.Point(109, 456);
+            this.txtDescuento.Location = new System.Drawing.Point(109, 491);
             this.txtDescuento.Name = "txtDescuento";
-            this.txtDescuento.Size = new System.Drawing.Size(57, 20);
+            this.txtDescuento.Size = new System.Drawing.Size(107, 20);
             this.txtDescuento.TabIndex = 93;
             this.txtDescuento.Text = "0";
             // 
@@ -502,7 +505,7 @@ namespace CapaPresentacion
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(212)))), ((int)(((byte)(216)))));
-            this.label11.Location = new System.Drawing.Point(15, 456);
+            this.label11.Location = new System.Drawing.Point(15, 491);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(88, 17);
             this.label11.TabIndex = 92;
@@ -511,7 +514,7 @@ namespace CapaPresentacion
             // txtMontoDescuento
             // 
             this.txtMontoDescuento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMontoDescuento.Location = new System.Drawing.Point(285, 456);
+            this.txtMontoDescuento.Location = new System.Drawing.Point(306, 491);
             this.txtMontoDescuento.Name = "txtMontoDescuento";
             this.txtMontoDescuento.Size = new System.Drawing.Size(107, 20);
             this.txtMontoDescuento.TabIndex = 95;
@@ -523,17 +526,40 @@ namespace CapaPresentacion
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(212)))), ((int)(((byte)(216)))));
-            this.label12.Location = new System.Drawing.Point(191, 456);
+            this.label12.Location = new System.Drawing.Point(222, 491);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(84, 17);
             this.label12.TabIndex = 94;
             this.label12.Text = "Descuento $";
+            // 
+            // txtFormaDePago
+            // 
+            this.txtFormaDePago.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtFormaDePago.Location = new System.Drawing.Point(526, 454);
+            this.txtFormaDePago.Name = "txtFormaDePago";
+            this.txtFormaDePago.Size = new System.Drawing.Size(107, 20);
+            this.txtFormaDePago.TabIndex = 97;
+            this.txtFormaDePago.Text = "0";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(212)))), ((int)(((byte)(216)))));
+            this.label14.Location = new System.Drawing.Point(422, 454);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(105, 17);
+            this.label14.TabIndex = 96;
+            this.label14.Text = "Forma de Pago:";
             // 
             // frmDetalleVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.Controls.Add(this.txtFormaDePago);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.txtMontoDescuento);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtDescuento);
@@ -608,5 +634,7 @@ namespace CapaPresentacion
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtMontoDescuento;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtFormaDePago;
+        private System.Windows.Forms.Label label14;
     }
 }

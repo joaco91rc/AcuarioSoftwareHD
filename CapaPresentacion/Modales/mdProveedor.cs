@@ -37,7 +37,7 @@ namespace CapaPresentacion.Modales
 
             cboBusqueda.DisplayMember = "Texto";
             cboBusqueda.ValueMember = "Valor";
-            cboBusqueda.SelectedIndex = 0;
+            cboBusqueda.SelectedIndex = 1;
             //Mostrar todos los Proveedores
 
             List<Proveedor> listaProveedor = new CN_Proveedor().Listar();
@@ -46,6 +46,7 @@ namespace CapaPresentacion.Modales
             {
                 dgvData.Rows.Add(new object[] { item.idProveedor,item.documento,item.razonSocial});
             }
+            txtBusqueda.Select();
         }
 
         private void iconPictureBox1_Click(object sender, EventArgs e)
@@ -96,6 +97,32 @@ namespace CapaPresentacion.Modales
                 };
                 this.DialogResult = DialogResult.OK;
                 this.Close();
+            }
+        }
+
+        private void txtBusqueda_KeyDown(object sender, KeyEventArgs e)
+        {
+            string columnaFiltro = ((OpcionCombo)cboBusqueda.SelectedItem).Valor.ToString();
+
+            if (e.KeyData == Keys.Enter)
+            {
+
+
+
+                if (dgvData.Rows.Count > 0)
+                {
+
+                    foreach (DataGridViewRow row in dgvData.Rows)
+                    {
+
+                        if (row.Cells[columnaFiltro].Value.ToString().Trim().ToUpper().Contains(txtBusqueda.Text.Trim().ToUpper()))
+                            row.Visible = true;
+                        else
+                            row.Visible = false;
+
+
+                    }
+                }
             }
         }
     }

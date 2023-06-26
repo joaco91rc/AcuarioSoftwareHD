@@ -65,10 +65,11 @@ namespace CapaPresentacion.Modales
 
             cboBusqueda.DisplayMember = "Texto";
             cboBusqueda.ValueMember = "Valor";
-            cboBusqueda.SelectedIndex = 0;
+            cboBusqueda.SelectedIndex = 3;
 
             //Mostrar todos los Productos
             List<Producto> listaProducto = new CN_Producto().Listar();
+            txtBusqueda.Select();
 
             foreach (Producto item in listaProducto)
             {
@@ -110,6 +111,34 @@ namespace CapaPresentacion.Modales
         private void iconPictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtBusqueda_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            string columnaFiltro = ((OpcionCombo)cboBusqueda.SelectedItem).Valor.ToString();
+
+            if (e.KeyData == Keys.Enter)
+            {
+
+
+
+                if (dgvData.Rows.Count > 0)
+            {
+
+                foreach (DataGridViewRow row in dgvData.Rows)
+                {
+
+                    if (row.Cells[columnaFiltro].Value.ToString().Trim().ToUpper().Contains(txtBusqueda.Text.Trim().ToUpper()))
+                        row.Visible = true;
+                    else
+                        row.Visible = false;
+
+
+                }
+            }
+            }
+           
         }
     }
 }

@@ -273,6 +273,7 @@ namespace CapaPresentacion
             this.txtBuscarCompra.Name = "txtBuscarCompra";
             this.txtBuscarCompra.Size = new System.Drawing.Size(196, 20);
             this.txtBuscarCompra.TabIndex = 64;
+            this.txtBuscarCompra.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscarCompra_KeyDown);
             // 
             // dgvData
             // 
