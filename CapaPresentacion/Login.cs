@@ -66,5 +66,31 @@ namespace CapaPresentacion
             txtContrasena.Text = "";
             txtUsuario.Text = "";
         }
+
+        private void txtContrasena_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                List<Usuario> test = new CN_Usuario().Listar();
+
+                Usuario oUsuario = new CN_Usuario().Listar().Where(u => u.documento == txtUsuario.Text && u.clave == txtContrasena.Text).FirstOrDefault();
+
+                if (oUsuario != null)
+                {
+                    Form form1 = new Inicio(oUsuario);
+                    form1.Show();
+                    this.Hide();
+                    form1.FormClosing += form_closing;
+                }
+
+
+
+                else
+                {
+                    MessageBox.Show("No se encontro el Usuario", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                }
+            }
+        }
     }
 }

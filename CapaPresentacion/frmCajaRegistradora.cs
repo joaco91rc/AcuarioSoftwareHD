@@ -72,7 +72,7 @@ namespace CapaPresentacion
             }
             cboBusqueda.DisplayMember = "Texto";
             cboBusqueda.ValueMember = "Valor";
-            cboBusqueda.SelectedIndex = 0;
+            cboBusqueda.SelectedIndex = 3;
 
             CajaRegistradora cajaAbierta = new CN_CajaRegistradora().Listar().Where(x => x.estado == true).FirstOrDefault();
 
@@ -247,6 +247,37 @@ namespace CapaPresentacion
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtBusqueda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData== Keys.Enter)
+            {
+                string columnaFiltro = ((OpcionCombo)cboBusqueda.SelectedItem).Valor.ToString();
+                List<CajaRegistradora> lista = new CN_CajaRegistradora().Listar();
+
+                CajaRegistradora cajaAbierta = lista.Where(c => c.estado == true).FirstOrDefault();
+                if (dgvData.Rows.Count > 0)
+                {
+
+                    foreach (DataGridViewRow row in dgvData.Rows)
+                    {
+
+                        if (row.Cells[columnaFiltro].Value.ToString().Trim().ToUpper().Contains(txtBusqueda.Text.Trim().ToUpper()))
+                        {
+                            row.Visible = true;
+
+                        }
+                        else
+                            row.Visible = false;
+
+
+                    }
+                    calcularTotal(cajaAbierta);
+
+
+                }
+            }
         }
     }
 }

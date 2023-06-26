@@ -55,7 +55,7 @@ namespace CapaPresentacion
 
             cboBusqueda.DisplayMember = "Texto";
             cboBusqueda.ValueMember = "Valor";
-            cboBusqueda.SelectedIndex = 0;
+            cboBusqueda.SelectedIndex = 2;
 
             //Mostrar todos los Productos
             List<Producto> listaProducto = new CN_Producto().Listar();
@@ -76,8 +76,7 @@ namespace CapaPresentacion
                     item.estado==true? "Activo": "No Activo"
                     });
             }
-
-
+            txtBusqueda.Select();
 
 
         }
@@ -380,6 +379,30 @@ namespace CapaPresentacion
 
                 }
 
+            }
+        }
+
+        private void txtBusqueda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Enter)
+            {
+                string columnaFiltro = ((OpcionCombo)cboBusqueda.SelectedItem).Valor.ToString();
+
+                if (dgvData.Rows.Count > 0)
+                {
+
+                    foreach (DataGridViewRow row in dgvData.Rows)
+                    {
+
+                        if (row.Cells[columnaFiltro].Value.ToString().Trim().ToUpper().Contains(txtBusqueda.Text.Trim().ToUpper()))
+                            row.Visible = true;
+                        else
+                            row.Visible = false;
+
+
+                    }
+
+                }
             }
         }
     }

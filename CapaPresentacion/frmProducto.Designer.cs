@@ -172,6 +172,7 @@ namespace CapaPresentacion
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(307, 20);
             this.txtBusqueda.TabIndex = 59;
+            this.txtBusqueda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBusqueda_KeyDown);
             // 
             // cboBusqueda
             // 

@@ -141,6 +141,7 @@ namespace CapaPresentacion
             this.txtContrasena.Size = new System.Drawing.Size(408, 20);
             this.txtContrasena.TabIndex = 2;
             this.txtContrasena.UseSystemPasswordChar = true;
+            this.txtContrasena.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtContrasena_KeyDown);
             // 
             // iconPictureBox1
             // 

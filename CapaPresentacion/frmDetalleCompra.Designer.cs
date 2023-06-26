@@ -458,6 +458,7 @@ namespace CapaPresentacion
             this.Controls.Add(this.label1);
             this.Name = "frmDetalleCompra";
             this.Text = "frmDetalleCompra";
+            this.Load += new System.EventHandler(this.frmDetalleCompra_Load);
             this.gbRegistrarCompra.ResumeLayout(false);
             this.gbRegistrarCompra.PerformLayout();
             this.gbInfoProveedor.ResumeLayout(false);

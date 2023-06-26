@@ -201,7 +201,7 @@ namespace CapaPresentacion
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvData.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvData.GridColor = System.Drawing.Color.White;
-            this.dgvData.Location = new System.Drawing.Point(514, 156);
+            this.dgvData.Location = new System.Drawing.Point(514, 114);
             this.dgvData.MultiSelect = false;
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
@@ -209,7 +209,7 @@ namespace CapaPresentacion
             this.dgvData.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvData.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dgvData.RowTemplate.Height = 28;
-            this.dgvData.Size = new System.Drawing.Size(824, 301);
+            this.dgvData.Size = new System.Drawing.Size(824, 346);
             this.dgvData.TabIndex = 82;
             // 
             // txtIndice
@@ -240,7 +240,7 @@ namespace CapaPresentacion
             this.btnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLimpiar.IconSize = 28;
             this.btnLimpiar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLimpiar.Location = new System.Drawing.Point(1054, 100);
+            this.btnLimpiar.Location = new System.Drawing.Point(1054, 79);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(35, 26);
             this.btnLimpiar.TabIndex = 89;
@@ -262,7 +262,7 @@ namespace CapaPresentacion
             this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscar.IconSize = 28;
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscar.Location = new System.Drawing.Point(1013, 100);
+            this.btnBuscar.Location = new System.Drawing.Point(1013, 79);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(35, 26);
             this.btnBuscar.TabIndex = 88;
@@ -272,17 +272,18 @@ namespace CapaPresentacion
             // txtBusqueda
             // 
             this.txtBusqueda.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtBusqueda.Location = new System.Drawing.Point(758, 106);
+            this.txtBusqueda.Location = new System.Drawing.Point(758, 85);
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(239, 20);
             this.txtBusqueda.TabIndex = 87;
+            this.txtBusqueda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBusqueda_KeyDown);
             // 
             // cboBusqueda
             // 
             this.cboBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboBusqueda.FormattingEnabled = true;
-            this.cboBusqueda.Location = new System.Drawing.Point(595, 105);
+            this.cboBusqueda.Location = new System.Drawing.Point(595, 84);
             this.cboBusqueda.Name = "cboBusqueda";
             this.cboBusqueda.Size = new System.Drawing.Size(157, 21);
             this.cboBusqueda.TabIndex = 86;
@@ -293,7 +294,7 @@ namespace CapaPresentacion
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(212)))), ((int)(((byte)(216)))));
-            this.label12.Location = new System.Drawing.Point(511, 104);
+            this.label12.Location = new System.Drawing.Point(511, 88);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(78, 17);
             this.label12.TabIndex = 85;
@@ -373,9 +374,9 @@ namespace CapaPresentacion
             this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardar.IconSize = 28;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(18, 270);
+            this.btnGuardar.Location = new System.Drawing.Point(172, 270);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(331, 31);
+            this.btnGuardar.Size = new System.Drawing.Size(252, 31);
             this.btnGuardar.TabIndex = 77;
             this.btnGuardar.Text = "Registrar Movimiento";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -447,6 +448,7 @@ namespace CapaPresentacion
             this.btnSeleccionar.HeaderText = "";
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.ReadOnly = true;
+            this.btnSeleccionar.Visible = false;
             this.btnSeleccionar.Width = 7;
             // 
             // idCajaRegistradora
